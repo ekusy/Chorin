@@ -1,5 +1,5 @@
-﻿import { useState } from 'react'
-import './PaymentsTable.css'
+﻿import { useState } from 'react';
+import './PaymentsTable.css';
 
 interface PaymentsTableProps {
     id: string;
@@ -16,10 +16,7 @@ function PaymentsTable({ id }: PaymentsTableProps) {
     const [payments, setPaymants] = useState(Array<Payment>());
 
     function UpdatePayments() { 
-        setPaymants([...payments, { expense: getRandomInt(1000), purpose: "太郎", payer: "なにか"}])
-    }
-    function getRandomInt(max:number) {
-        return Math.floor(Math.random() * max);
+        setPaymants([...payments, { expense: (payments.length+1)*100, purpose: "太郎", payer: "なにか"}])
     }
 
     return (
