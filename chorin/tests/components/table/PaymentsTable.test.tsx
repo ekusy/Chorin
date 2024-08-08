@@ -2,6 +2,11 @@
 import { render, screen, fireEvent } from "@testing-library/react"  // 
 import '@testing-library/jest-dom';
 import PaymentsTable from '../../../src/componets/table/PaymentsTable';
+import { Payment } from '../../../src/componets/table/Payment';
+
+// Paymentモジュール全体をモック化
+// 子要素であるPaymentはモック化することにより、Paymentの実装によらずテストできる
+jest.mock('../../../src/componets/table/Payment');
 
 describe('PaymentsTableテスト', () => {
     test('固定部分', async () => {
@@ -18,28 +23,21 @@ describe('PaymentsTableテスト', () => {
     });
     test('ボタン押下で行が増える', async () => {
         // 要素のレンダリング
-        const { container } = render(<PaymentsTable id={"test"} />)
+        render(<PaymentsTable id={"test"} />)
 
         // ボタンを取得
         const button = screen.getByText(/行追加/i);
 
-        // ボタンをクリック
-        fireEvent.click(button);
-
-        // セルの数確認
-        const tds1 = container.querySelectorAll("td");
-        expect(tds1).toHaveLength(3);
-
-        // セルの各要素確認
-        expect(screen.getByText(/100/i)).toBeInTheDocument();
-        expect(screen.getByText(/太郎/i)).toBeInTheDocument();
-        expect(screen.getByText(/なにか/i)).toBeInTheDocument();
+        // ボタンを押すまでは要素が存在しないことをを確認
+        // モック化したPayment functionが呼び出されていないことで確認する
+        expect(Payment).toBeCalledTimes(0);
 
         // ボタンをクリック
         fireEvent.click(button);
-        const tds2 = container.querySelectorAll("td");
-        expect(tds2).toHaveLength(6);
-        expect(screen.getByText(/200/i)).toBeInTheDocument();
+
+        // ボタンを押すことでPaymentが増えることを確認
+        // モック化したPayment functionが呼び出されていることで確認する
+        expect(Payment).toHaveBeenCalled();
 
     });
 });

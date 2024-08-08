@@ -12,3 +12,5 @@
 - [React テストコード（Jest, React Testing Library）の学びと Tips](https://qiita.com/t-kurasawa/items/950a0f4ccf57312d6430)
 - [TypeScriptのコードをJestでテストする](https://kinosuke.hatenablog.jp/entry/2021/07/25/160300)
 - [Jestを使ってCSSをimportしているコンポーネントをテストする](https://blog.kimizuka.org/entry/2021/05/21/124656)
+- [idやclassを使ってテストを書くのは、もはやアンチパターンである](https://qiita.com/akameco/items/519f7e4d5442b2a9d2da)
+- [jestを完全に理解したい（jest.mock()編）](https://qiita.com/only/items/07634f917660f2e791b0)
