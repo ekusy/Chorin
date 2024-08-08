@@ -16,12 +16,13 @@ export interface PaymentProps {
  * @param payment
  * @returns
  */
-export function Payment({id,expense,purpose,payer }: PaymentProps) {
+export function Payment({ id, expense, purpose, payer }: PaymentProps) {
+
     return (
-        <tr data-id={id }>
-            <td>{payer}</td>
-            <td>{purpose}</td>
-            <td>{expense}</td>
-        </tr>
+        <div data-id={id} data-testid="payment-row" className="payment-row" >
+            <div className="payment-item" data-testid="payment-item">{payer}</div>
+            <div className="payment-item" data-testid="payment-item">{purpose}</div>
+            <div className="payment-item" data-testid="payment-item">{expense}</div>
+        </div>
     );
 }

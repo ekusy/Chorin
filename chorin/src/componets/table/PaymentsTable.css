@@ -1,0 +1,9 @@
+.header-row {
+    display: flex;
+}
+
+
+.header-item {
+    width: 10em;
+    background-color : lightblue;
+}
