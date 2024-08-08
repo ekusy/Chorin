@@ -1,0 +1,11 @@
+th, td {
+    border: solid;
+}
+
+.payment-row {
+    display :flex;
+}
+
+.payment-item {
+    width: 10em;
+}
